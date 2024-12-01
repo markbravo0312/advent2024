@@ -1,4 +1,5 @@
 from numpy import loadtxt, sort
+from collections import Counter
 
 FILENAME = "input.txt"
 
@@ -17,9 +18,7 @@ def part1() :
 
 def part2 () :
     list1, list2 = parse_input(FILENAME)
-    freq = {}
-    for item in list2: 
-        freq[item] = freq.get(item, 0) + 1
+    freq = Counter(list2)
     acc = sum(freq.get(elem, 0) * elem for elem in list1)
     return acc
 
