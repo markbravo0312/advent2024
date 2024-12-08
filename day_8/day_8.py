@@ -5,7 +5,7 @@ FILENAME = "input.txt"
 
 
 
-def part1() : 
+def solve() : 
     antennas = {}
     
     
@@ -79,7 +79,7 @@ def part1() :
     
     
 if __name__ == "__main__" :
-    part1() 
+    solve() 
                 
             
         
