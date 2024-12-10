@@ -51,9 +51,6 @@ def part1() :
     
     print("Result for Part1: ", total )
         
-
-        
-        
     
 def part2() : 
     files, free_blocks = [], []
