@@ -30,7 +30,8 @@ def score(r, c):
             
     return total
        
-
+# This works, but optimally for clarity you track the number of ways to reach a pos with the visited map instead of continuing
+# This will work because of the +1 condition for neighbor so you end up going through all the unique paths until the end
 def rating(r,c):
     q = deque( [(r,c)] ) 
    
