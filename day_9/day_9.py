@@ -53,6 +53,7 @@ def part1() :
         
 
         
+        
     
 def part2() : 
     files, free_blocks = [], []
