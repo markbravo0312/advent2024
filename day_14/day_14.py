@@ -42,24 +42,51 @@ def solve2() :
         x,y,vx,vy = map(int, re.findall(r'-?\d+', r))
 
         robs.append( [x,y,vx,vy] )
+    
+    safety_factor = float('inf')
+    iteration = None
+        
 
-    for i in range(100):
-        grid = [[' '] * 101 for _ in range(103)]
+    for i in range(ROWS * COLS):
+        q1 = 0
+        q2 = 0
+        q3 = 0
+        q4 = 0
+        
         for rob in robs: 
             x = rob[0]
             y = rob[1]
             vx = rob[2]
             vy = rob[3]
-            if grid[y][x] == ' ':
-                grid[y][x] = '1'
-            else : 
-                grid[y][x] = str(int(grid[y][x]) + 1)
             
-            rob[0] = (x + vx) % COLS
-            rob[1] = (y + vy) % ROWS
+            next_x = (x + vx) % COLS
+            next_y = (y + vy) % ROWS
+            
+            rob[0] = next_x
+            rob[1] = next_y
+            
+            if next_x == COLS//2 or next_y == ROWS//2 : continue
+            if 0 <= next_x <= (COLS//2)-1 :
+                if 0 <= next_y <= (ROWS//2)-1:
+                    q1 += 1
+                else :
+                    q3 += 1
+            else:
+                if 0 <= next_y <= (ROWS//2)-1:
+                    q2 += 1
+                else: 
+                    q4 += 1
+                    
+        sf = q1 * q2 * q3 * q4
+        if sf < safety_factor:
+            safety_factor = sf
+            iteration = i + 1
+            
+    print("result for part2: ", iteration)
 
-        print("for second:", i)
-        print('\n'.join(map(''.join, grid)))
+    
+
+    
 
             
 
